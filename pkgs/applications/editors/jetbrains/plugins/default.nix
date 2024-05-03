@@ -109,6 +109,9 @@ rec {
           do
             ln -s "$plugin" -t $out/${meta.mainProgram}/plugins/
           done
+          if test -f $out/${meta.mainProgram}/plugins/plugin-classpath.txt; then
+            rm -f $out/${meta.mainProgram}/plugins/plugin-classpath.txt
+          fi
           sed "s|${ide.outPath}|$out|" \
             -i $(realpath $out/bin/${meta.mainProgram}) \
             -i $(realpath $out/bin/${meta.mainProgram}-remote-dev-server)
